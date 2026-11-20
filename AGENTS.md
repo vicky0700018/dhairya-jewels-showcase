@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project architecture
+
+- Keep public content in individual TanStack file routes, and share the storefront, browser-persisted demo state, and static `public/images` assets through reusable source modules; this preserves direct URLs and simple static deployment.

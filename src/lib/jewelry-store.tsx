@@ -40,7 +40,7 @@ export type DemoState = {
   wishlist: string[];
 };
 
-const catalogSeed: Omit<Product, "id">[] = [
+const catalogSeed: Product[] = [
   ["Zaveri Heritage Collar", "Necklaces", "22K Yellow Gold", 286500, "/images/gold-necklace.png", "Heritage", true, false, "Ruby & Polki"],
   ["Noor Solitaire Ring", "Rings", "18K Yellow Gold", 94500, "/images/diamond-ring.png", "Diamond Elegance", true, true, "Demo diamond"],
   ["Gulabi Jhumka Earrings", "Earrings", "22K Yellow Gold", 128000, "/images/gold-earrings.png", "Traditional", true, false, "Ruby & pearl"],
@@ -75,7 +75,7 @@ const catalogSeed: Omit<Product, "id">[] = [
     category: String(category),
     metal: String(metal),
     price: Number(price),
-    originalPrice: i % 5 === 1 ? Math.round(Number(price) * 1.12) : undefined,
+    ...(i % 5 === 1 ? { originalPrice: Math.round(Number(price) * 1.12) } : {}),
     image: String(image),
     sku: `DGJ-${String(i + 1).padStart(3, "0")}`,
     description: `A considered design from our ${String(collection).toLowerCase()} edit, imagined for the moments you keep close. Product details shown are illustrative demo information.`,
